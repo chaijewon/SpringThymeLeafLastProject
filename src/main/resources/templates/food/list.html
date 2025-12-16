@@ -22,11 +22,13 @@
 		</div>
 		<div class="row" style="margin-top: 10px">
 		  <ul class="pagination text-center">
-		    <li th:if="${startPage>1}"><a href="#">&laquo;</a></li>
+		    <li th:if="${startPage>1}">
+		      <a th:href="@{/food/list(page=${startPage-1})}">&laquo;</a></li>
 		    <li th:each="i:${#numbers.sequence(startPage,endPage)}"
 		     th:class="${curpage==i?'active':''}"
-		    ><a href="">[[${i}]]</a></li>
-		    <li th:if="${endPage<totalpage}"><a href="#">&raquo;</a></li>
+		    ><a th:href="@{/food/list(page=${i})}">[[${i}]]</a></li>
+		    <li th:if="${endPage<totalpage}">
+		      <a th:href="@{/food/list(page=${endPage+1})}">&raquo;</a></li>
 		  </ul>
 		</div>
 	</div>
