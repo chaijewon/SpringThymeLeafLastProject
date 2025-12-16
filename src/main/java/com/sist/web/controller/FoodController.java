@@ -1,5 +1,6 @@
 package com.sist.web.controller;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,8 @@ import com.sist.web.vo.*;
 import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
+// SI / SM / SE => devops 
+// => AI 
 public class FoodController {
     private final FoodService fService;
     

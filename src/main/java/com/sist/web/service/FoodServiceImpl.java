@@ -22,4 +22,10 @@ public class FoodServiceImpl implements FoodService{
 	// TODO Auto-generated method stub
 	return mapper.foodTotalPage();
    }
+
+   @Override
+   public List<FoodVO> foodTop10Data() {
+	// TODO Auto-generated method stub
+	return mapper.foodTop10Data();
+   }
 }
