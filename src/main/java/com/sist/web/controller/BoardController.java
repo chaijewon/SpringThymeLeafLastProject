@@ -78,6 +78,22 @@ public class BoardController {
 	   model.addAttribute("main_html", "board/update");
 	   return "main/main";
    }
+   @PostMapping("/board/update_ok")
+   public String board_update_ok(@ModelAttribute("vo") BoardEntity vo,Model model)
+   {
+	   BoardEntity dbVO=bDao.findByNo(vo.getNo());
+	   String result="no";
+	   if(vo.getPwd().equals(dbVO.getPwd()))
+	   {
+		   vo.setNo(vo.getNo());
+		   vo.setHit(dbVO.getHit());
+		   bDao.save(vo);
+		   result="yes";
+	   }
+	   model.addAttribute("res", result);
+	   model.addAttribute("no", vo.getNo());
+	   return "board/update_ok";
+   }
 }
 
 
