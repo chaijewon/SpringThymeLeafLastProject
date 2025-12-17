@@ -109,6 +109,20 @@ public class BoardController {
 	   model.addAttribute("main_html", "board/delete");
 	   return "main/main";
    }
+   @PostMapping("/board/delete_ok")
+   public String board_delete_ok(@RequestParam("no") int no,
+		   @RequestParam("pwd") String pwd,Model model)
+   {
+	   String res="no";
+	   BoardEntity vo=bDao.findByNo(no);
+	   if(pwd.equals(vo.getPwd()))
+	   {
+		   res="yes";
+		   bDao.delete(vo);
+	   }
+	   model.addAttribute("res", res);
+	   return "board/delete_ok";
+   }
 }
 
 
