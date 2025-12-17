@@ -94,6 +94,21 @@ public class BoardController {
 	   model.addAttribute("no", vo.getNo());
 	   return "board/update_ok";
    }
+   /*
+    *  prefix: classpath:templates/
+       suffix: .html
+       
+       templates/board/delete.html
+    */
+   @GetMapping("/board/delete")
+   public String board_delete(@RequestParam("no") int no,
+		   Model model)
+   {
+	   model.addAttribute("no", no);
+	   
+	   model.addAttribute("main_html", "board/delete");
+	   return "main/main";
+   }
 }
 
 
