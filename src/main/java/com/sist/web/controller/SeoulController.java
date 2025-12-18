@@ -19,6 +19,12 @@ import com.sist.web.service.*;
 public class SeoulController {
    // 필요한 객체를 스프링으로 값을 얻어 온다 => 의존성 주입 (DI)
    private final SeoulService sService;
+   private String[] tables={
+		   "",
+		   "seoul_location",
+		   "seoul_nature",
+		   "seoul_shop"
+   };
    /*@Autowired
    public SeoulController(SeoulService sService)
    {
@@ -80,6 +86,22 @@ public class SeoulController {
 	   // include 
 	    seoul_common(page, model, "seoul_shop");
 	    return "main/main";
+   }
+   @GetMapping("detail")
+   public String seoul_detail(@RequestParam("no") int no,
+		   @RequestParam("type") int type,Model model)
+   {
+	   // DB연동 
+	   Map map=new HashMap();
+	   map.put("no",no);
+	   map.put("table_name", tables[type]);
+	   SeoulVO vo=sService.seoulDetailData(map);
+	   String address=vo.getAddress();
+	   address=address.substring(address.indexOf(" ")+1);
+	   vo.setAddress(address.trim());
+	   model.addAttribute("vo", vo);
+	   model.addAttribute("main_html", "seoul/detail");
+	   return "main/main";
    }
    
 }

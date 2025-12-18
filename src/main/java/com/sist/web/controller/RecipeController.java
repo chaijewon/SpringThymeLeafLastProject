@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sist.web.service.RecipeService;
+import com.sist.web.vo.RecipeDetailVO;
 import com.sist.web.vo.RecipeVO;
 import com.sist.web.vo.SeoulVO;
 
@@ -91,6 +92,16 @@ public class RecipeController {
 		   	model.addAttribute("startPage", startPage);
 		   	model.addAttribute("endPage", endPage);
 		    model.addAttribute("main_html", "recipe/list");
+	   return "main/main";
+   }
+   @GetMapping("detail")
+   public String recipe_detail(@RequestParam("no") int no, Model model)
+   {
+	   // DB 연동 
+	   RecipeDetailVO vo=rService.recipeDetailData(no);
+	   model.addAttribute("vo", vo);
+	   // 댓글 
+	   model.addAttribute("main_html", "recipe/detail");
 	   return "main/main";
    }
 }
