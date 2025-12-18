@@ -111,4 +111,10 @@ public interface SeoulMapper {
    @Select("SELECT * FROM ${table_name} "
 		  +"WHERE no=#{no}")
    public SeoulVO seoulDetailData(Map map);
+   
+   @Select("SELECT fno,name,poster,address,rownum "
+		  +"FROM menupan_food "
+		  +"WHERE REGEXP_LIKE(address,#{address}) "
+		  +"AND rownum<=6")
+   public List<FoodVO> seoulNearFoodHouse(String address);
 }

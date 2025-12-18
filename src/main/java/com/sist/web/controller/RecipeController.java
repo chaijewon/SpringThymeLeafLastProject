@@ -104,6 +104,15 @@ public class RecipeController {
 	   model.addAttribute("main_html", "recipe/detail");
 	   return "main/main";
    }
+   @GetMapping("chef_list")
+   public String recipe_chef_list(
+		   @RequestParam(name="page",required = false) String page,
+		   @RequestParam("chef") String chef,Model model)
+   {
+	   // DB 연동 
+	   model.addAttribute("main_html", "recipe/chef_list");
+	   return "main/main";
+   }
 }
 
 

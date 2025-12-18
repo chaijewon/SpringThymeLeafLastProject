@@ -74,6 +74,18 @@ public class RecipeServiceImpl implements RecipeService{
 		mapper.recipeHitIncrement(no);
 		return mapper.recipeDetailData(no);
 	}
+
+	@Override
+	public List<RecipeVO> recipeTop10() {
+		// TODO Auto-generated method stub
+		return mapper.recipeTop10();
+	}
+
+	@Override
+	public List<RecipeVO> recipeChefListData(int start, String chef) {
+		// TODO Auto-generated method stub
+		return mapper.recipeChefListData(start, chef);
+	}
     
     
 }

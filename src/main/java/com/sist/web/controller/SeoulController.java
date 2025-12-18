@@ -100,6 +100,12 @@ public class SeoulController {
 	   address=address.substring(address.indexOf(" ")+1);
 	   vo.setAddress(address.trim());
 	   model.addAttribute("vo", vo);
+	   String[] addr=vo.getAddress().split(" ");
+	   String addr1=addr[1].trim();
+	   System.out.println(addr1);
+	   List<FoodVO> list=sService.seoulNearFoodHouse(addr1);
+	   model.addAttribute("list", list);
+	  
 	   model.addAttribute("main_html", "seoul/detail");
 	   return "main/main";
    }

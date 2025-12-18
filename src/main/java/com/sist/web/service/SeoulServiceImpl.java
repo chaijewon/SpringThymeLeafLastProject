@@ -43,6 +43,12 @@ public class SeoulServiceImpl implements SeoulService{
 	   mapper.seoulHitIncrement(map);
 	   return mapper.seoulDetailData(map);
    }
+
+   @Override
+   public List<FoodVO> seoulNearFoodHouse(String address) {
+	// TODO Auto-generated method stub
+	return mapper.seoulNearFoodHouse(address);
+   }
 }
 
 

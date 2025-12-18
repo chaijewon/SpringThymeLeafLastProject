@@ -1,6 +1,7 @@
 package com.sist.web.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -46,5 +47,21 @@ public interface RecipeMapper {
   @Select("SELECT * FROM recipedetail "
 		 +"WHERE no=#{no}")
   public RecipeDetailVO recipeDetailData(int no);
+  
+  @Select("SELECT no,title,hit,chef,rownum "
+		 +"FROM (SELECT no,title,hit,chef "
+		 +"FROM recipe ORDER BY hit DESC) "
+		 +"WHERE rownum<=10")
+  public List<RecipeVO> recipeTop10();
+  
+     @Select("SELECT no,poster,title,chef "
+			 +"FROM recipe "
+			 +"WHERE REGEXP_LIKE(chef,#{chef}) "
+			 +"ORDER BY no ASC "
+			 +"OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
+	  public List<RecipeVO> recipeChefListData(
+			  @Param("start") int start,
+			  @Param("chef") String chef
+			 );
   
 }
