@@ -24,6 +24,18 @@ public class SeoulServiceImpl implements SeoulService{
 	// TODO Auto-generated method stub
 	 return mapper.seoulMainData(map);
    }
+
+   @Override
+   public List<SeoulVO> seoulListData(Map map) {
+	// TODO Auto-generated method stub
+	return mapper.seoulListData(map);
+   }
+
+   @Override
+   public int seoulTotalPage(Map map) {
+	// TODO Auto-generated method stub
+	return mapper.seoulTotalPage(map);
+   }
 }
 
 

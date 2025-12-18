@@ -78,4 +78,29 @@ public interface SeoulMapper {
 		  +"FROM ${table_name} ORDER BY no DESC) "
 		  +"WHERE rownum<=3")
    public List<SeoulVO> seoulMainData(Map map);
+   
+   // 명소 / 자연 / 쇼핑 => 맛집 => 지도 => 댓글 (Vue)
+   @Select("SELECT no,title,poster,address "
+		  +"FROM ${table_name} "
+		  +"ORDER BY no ASC "
+		  +"OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
+          // MySQL => LIMIT #{start},12 => MongoDB
+   public List<SeoulVO> seoulListData(Map map);
+   
+   @Select("SELECT CEIL(COUNT(*)/12.0) FROM ${table_name}")
+   public int seoulTotalPage(Map map);
+   /*
+    *   2025 => Spring-Boot : JSP / ThymeLeaf => SpringFrameWork
+    *           WEB 
+    *   2026 => Spring-Security : JWT(Cookie) / 일반(Session)
+    *                             | => SNS로그인 
+    *           Spring-Batch : 스켈쥴러 
+    *           Spring-Data / Spring-AI / Spring-I / Spring-Kafka
+    *           ------------- ----------             -------------
+    *           MSA  
+    *           => PROCEDURE / FUNCTION / GROUPING 
+    *   => PINIA / React-Query 
+    *       |          |
+    *       ------------ 승부처
+    */
 }
