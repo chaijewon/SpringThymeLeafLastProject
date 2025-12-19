@@ -70,4 +70,6 @@ public interface RecipeMapper {
      @Select("SELECT CEIL(COUNT(*)/12.0) FROM recipe "
    		  +"WHERE REGEXP_LIKE(chef,#{chef})")
      public int recipeChefTotalPage(String chef);
+     
+     
 }
