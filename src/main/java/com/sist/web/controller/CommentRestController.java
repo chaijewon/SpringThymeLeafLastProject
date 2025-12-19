@@ -63,5 +63,23 @@ public class CommentRestController {
 	   }
 	   return new ResponseEntity<>(map,HttpStatus.OK);
    }
+   @GetMapping("/comment/delete_vue/")
+   public ResponseEntity<Map> comment_delete(
+		      @RequestParam("cno") int cno,
+			  @RequestParam("type") int type,
+			  @RequestParam("no") int no
+			  )
+   {
+	   Map map=new HashMap();
+	   try
+	   {
+		   cService.commentDelete(no);
+		   map=commonsData(cno, type);
+	   }catch(Exception ex)
+	   {
+		   return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+	   }
+	   return new ResponseEntity<>(map,HttpStatus.OK);
+   }
    
 }
