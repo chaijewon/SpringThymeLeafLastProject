@@ -13,11 +13,11 @@
 			    <div class="thumbnail">
 			      <a th:href="@{/recipe/detail(no=${vo.no})}">
 			        <img th:src="${vo.poster}" 
-			         style="width:240px;height: 130px"
+			         style="width:240px;height: 200px"
 			         th:title="${vo.title}"
 			         >
 			        <div class="caption">
-			          <p><a href="@{/recipe/chef_list(chef=${vo.chef})}">[[${vo.chef}]]</a></p>
+			          <p><a th:href="@{/recipe/chef_list(chef=${vo.chef})}">[[${vo.chef}]]</a></p>
 			        </div>
 			      </a>
 			 </div>				
